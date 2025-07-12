@@ -16,7 +16,7 @@ const Updatepost = () => {
 
   const update = async () => {
     try {
-      const res = await axios.get(`${base_url}/user/${id}`);
+      const res = await axios.get(`${base_url}/update/${id}`);
       const finalres = res.data;
       setForm({
         title: finalres.title,
@@ -41,7 +41,12 @@ const Updatepost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${base_url}/user/${id}`,form);
+      await axios.patch(`${base_url}/update/${id}`,form,{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json",
+        },
+      });
       navigate('/');
       toast.success("Post Updated Successfully")
     } catch (error) {

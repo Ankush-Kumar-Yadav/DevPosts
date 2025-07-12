@@ -1,9 +1,9 @@
 const postModel = require('../models/postModel');
 const userModel = require('../models/userModel');
 
-const GetAllPost = async (req, res) => {
+const GetUserPost = async (req, res) => {
     try {
-        const userId = req.user.id; // Get user ID from auth middleware
+        const userId = req.params.id; // Get user ID from auth middleware
         
         // Find the user and populate their posts
         const user = await userModel.findById(userId) 
@@ -34,4 +34,4 @@ const GetAllPost = async (req, res) => {
     }
 };
 
-module.exports = GetAllPost;
+module.exports = GetUserPost;

@@ -21,7 +21,12 @@ function Postdata() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const post = await axios.post(`${base_url}/post`, get);
+      const post = await axios.post(`${base_url}/createpost`,get,{
+        withCredentials:true,
+        headers:{
+          "Content-Type":"application/json",
+        },
+      });
       console.log("Post created successfully", post);
      
        toast.success("Post Created SuccessFully")
@@ -35,6 +40,7 @@ function Postdata() {
     }
 
   }
+  
 
   return (
     <div className='h-full w-full  flex justify-center'>
